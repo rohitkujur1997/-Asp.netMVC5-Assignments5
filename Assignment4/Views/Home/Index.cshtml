@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<Assignment4.Models.Account>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Action("GetNews", new { category = "Sports" })
+@Html.Action("GetNews", new { category = "Weather" })
+@Html.Action("GetNews", new { category = "Stock" })
+
+<h2>
+    Viewing all accounts...
+</h2>
+
+
+@Html.ActionLink("Create new account", "Create")
+@foreach (var a in Model)
+{
+    <p>
+        <b>Account Number:</b> @a.AccountNumber
+    </p>
+    <p>
+        <b>Account Holder's Name:</b> @a.Name
+    </p>
+
+    <p>
+        <b>Current Balance:</b> @a.CurrentBalance.ToString("C")
+    </p>
+    @Html.ActionLink("Edit", "Edit", new { accno = @a.AccountNumber })
+    <span>&nbsp;</span>
+    @Html.ActionLink("Delete", "Delete", new { accno = @a.AccountNumber })
+    <hr />
+}
+
+
